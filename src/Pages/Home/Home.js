@@ -1,11 +1,14 @@
 import React from "react";
+import Footer from "../Shared/Footer/Footer";
+import Navbar from "../Shared/Navbar/Navbar";
+import Banner from "./Banner/Banner";
 
 const Home = () => {
   return (
     <div>
-      <h1 className="text-3xl text-primary font-bold underline">Auto Zone</h1>
-      <h1 className="text-3xl text-secondary font-bold underline">Auto Zone</h1>
-      <h1 className="text-3xl text-accent font-bold underline">Auto Zone</h1>
+      <Navbar />
+      <Banner />
+      <Footer />
     </div>
   );
 };

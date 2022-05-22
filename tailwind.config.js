@@ -4,10 +4,10 @@ module.exports = {
     themes: [
       {
         autoZoneTheme: {
-          primary: "#a991f7",
-          secondary: "#f6d860",
-          accent: "#37cdbe",
-          neutral: "#3d4451",
+          primary: "#ef233c",
+          secondary: "#050505",
+          accent: "#ffe100",
+          neutral: "#EDF2F4",
           "base-100": "#ffffff",
         },
       },
