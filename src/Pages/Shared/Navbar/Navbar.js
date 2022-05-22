@@ -21,28 +21,28 @@ const Navbar = () => {
   return (
     <div className="bg-secondary">
       <div className="container mx-auto px-2 py-6">
-        <div class="navbar rounded bg-base-100">
-          <div class="navbar-start">
-            <div class="dropdown">
-              <label tabindex="0" class="btn btn-ghost lg:hidden">
+        <div className="navbar rounded bg-base-100">
+          <div className="navbar-start">
+            <div className="dropdown">
+              <label tabIndex="0" className="btn btn-ghost lg:hidden">
                 <HiOutlineMenuAlt1 className="h-5 w-5" />
               </label>
               <ul
-                tabindex="0"
-                class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                tabIndex="0"
+                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
               >
                 {menuItems}
               </ul>
             </div>
-            <a class="btn btn-ghost normal-case text-xl">
+            <a className="btn btn-ghost normal-case text-xl">
               <img src={logo} alt="" className="h-10" />
             </a>
           </div>
-          <div class="navbar-center hidden lg:flex">
-            <ul class="menu menu-horizontal p-0">{menuItems}</ul>
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal p-0">{menuItems}</ul>
           </div>
-          <div class="navbar-end">
-            <a class="btn">Get started</a>
+          <div className="navbar-end">
+            <a className="btn">Get started</a>
           </div>
         </div>
       </div>
