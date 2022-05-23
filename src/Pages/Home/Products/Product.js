@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Product = () => {
   return (
@@ -29,9 +30,12 @@ const Product = () => {
             <span className="text-left">Available Quantity</span>
           </div>
           <div className="card-actions justify-end">
-            <button className="btn btn-neutral hover:btn-primary hover:text-white w-full rounded-full">
-              Order Now
-            </button>
+            <Link
+              to="/purchase"
+              className="btn btn-neutral hover:btn-primary hover:text-white w-full rounded-full"
+            >
+              Purchase Now
+            </Link>
           </div>
         </div>
       </div>
