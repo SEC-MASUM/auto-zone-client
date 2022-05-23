@@ -16,6 +16,8 @@ import ManageOrders from "./Pages/Dashboard/ManageOrders/ManageOrders";
 import AddProduct from "./Pages/Dashboard/AddProduct/AddProduct";
 import UserRole from "./Pages/Dashboard/UserRole/UserRole";
 import ManageProducts from "./Pages/Dashboard/ManageProducts/ManageProducts";
+import Login from "./Pages/Shared/Login/Login";
+import SignUp from "./Pages/Shared/SignUp/SignUp";
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
         <Route path="/products" element={<Products />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />}>
           <Route index element={<MyOrders />} />
           <Route path="profile" element={<Profile />} />
