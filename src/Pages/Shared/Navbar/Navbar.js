@@ -20,6 +20,9 @@ const Navbar = () => {
       <li>
         <Link to="/blogs">Blogs</Link>
       </li>
+      <li>
+        <Link to="/login">Login</Link>
+      </li>
     </>
   );
   return (
@@ -42,13 +45,13 @@ const Navbar = () => {
               <img src={logo} alt="" className="h-10" />
             </a>
           </div>
-          <div className="navbar-center hidden lg:flex">
+          <div className="navbar-end hidden lg:flex">
             <ul className="menu menu-horizontal p-0">{menuItems}</ul>
           </div>
-          <div className="navbar-end">
+          <div className="navbar-end lg:hidden">
             <label
-              for="dashboard-sidebar"
-              class="btn btn-neutral drawer-button lg:hidden"
+              htmlFor="dashboard-sidebar"
+              className="btn btn-neutral drawer-button "
             >
               <HiOutlineMenuAlt1 className="h-5 w-5" />
             </label>
