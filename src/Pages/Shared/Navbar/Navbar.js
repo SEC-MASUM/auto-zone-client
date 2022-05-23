@@ -1,20 +1,24 @@
 import React from "react";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
+import { Link } from "react-router-dom";
 import logo from "../../../Assets/images/Logo.png";
 const Navbar = () => {
   const menuItems = (
     <>
       <li>
-        <a>Dashboard</a>
+        <Link to="/">Home</Link>
       </li>
       <li>
-        <a>Portfolio</a>
+        <Link to="/products">Products</Link>
       </li>
       <li>
-        <a>Blog</a>
+        <Link to="/dashboard">Dashboard</Link>
       </li>
       <li>
-        <a>Products</a>
+        <Link to="/portfolio">Portfolio</Link>
+      </li>
+      <li>
+        <Link to="/blogs">Blogs</Link>
       </li>
     </>
   );
@@ -42,7 +46,12 @@ const Navbar = () => {
             <ul className="menu menu-horizontal p-0">{menuItems}</ul>
           </div>
           <div className="navbar-end">
-            <a className="btn">Get started</a>
+            <label
+              for="dashboard-sidebar"
+              class="btn btn-neutral drawer-button lg:hidden"
+            >
+              <HiOutlineMenuAlt1 className="h-5 w-5" />
+            </label>
           </div>
         </div>
       </div>

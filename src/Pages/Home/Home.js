@@ -9,7 +9,7 @@ import Products from "./Products/Products";
 const Home = () => {
   return (
     <div className="">
-      <Navbar />
+      
       <Banner />
       <BusinessSummary />
       <Products />
