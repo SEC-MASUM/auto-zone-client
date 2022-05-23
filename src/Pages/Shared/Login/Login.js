@@ -14,7 +14,7 @@ const Login = () => {
   return (
     <div>
       <div
-        class="hero min-h-screen"
+        className="hero min-h-screen"
         style={{
           backgroundImage: `url(${bg})`,
           backgroundRepeat: "no-repeat",
@@ -22,28 +22,28 @@ const Login = () => {
           backgroundPosition: "center",
         }}
       >
-        <div class="hero-overlay bg-opacity-60">
-          <div class="min-h-screen max-h-fit flex justify-center items-center my-10 px-2">
-            <div class="card w-full md:max-w-sm shadow-2xl glass ">
-              <div class="card-body">
+        <div className="hero-overlay bg-opacity-60">
+          <div className="min-h-screen max-h-fit flex justify-center items-center my-10 px-2">
+            <div className="card w-full md:max-w-sm shadow-2xl glass ">
+              <div className="card-body">
                 <h2 className="text-primary text-2xl font-bold">Login</h2>
                 <p>Welcome back again </p>
                 {/* -----------Form----------- */}
                 <form onSubmit={handleSubmit(onSubmit)}>
                   {/* -----------Email Field-------------- */}
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">Email</span>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Email</span>
                     </label>
                     <input
                       type="text"
                       placeholder="Email"
-                      class="input input-bordered glass"
+                      className="input input-bordered glass"
                       {...register("email", { required: true })}
                     />
                     {/* errors will return when field validation fails  */}
-                    <label class="label">
-                      <span class="label-text-alt">
+                    <label className="label">
+                      <span className="label-text-alt">
                         {errors.email && (
                           <span className="text-primary">
                             This field is required
@@ -53,18 +53,18 @@ const Login = () => {
                     </label>
                   </div>
                   {/* -------------Password Field--------------- */}
-                  <div class="form-control">
-                    <label class="label">
-                      <span class="label-text">Password</span>
+                  <div className="form-control">
+                    <label className="label">
+                      <span className="label-text">Password</span>
                     </label>
                     <input
                       type="text"
                       placeholder="Password"
-                      class="input input-bordered glass"
+                      className="input input-bordered glass"
                       {...register("password", { required: true })}
                     />
-                    <label class="label">
-                      <span class="label-text-alt">
+                    <label className="label">
+                      <span className="label-text-alt">
                         {errors.password && (
                           <span className="text-primary">
                             This field is required
@@ -73,17 +73,17 @@ const Login = () => {
                       </span>
                     </label>
                     {/* -----------Forget Password--------- */}
-                    <label class="label">
-                      <Link to="" class="label-text-alt link link-hover">
+                    <label className="label">
+                      <Link to="" className="label-text-alt link link-hover">
                         Forgot password?
                       </Link>
                     </label>
                   </div>
                   {/* -------------------------- */}
-                  <div class="form-control mt-6">
+                  <div className="form-control mt-6">
                     <input
                       type="submit"
-                      class="btn btn-primary font-bold"
+                      className="btn btn-primary font-bold"
                       value="Login"
                     />
                   </div>
@@ -98,7 +98,7 @@ const Login = () => {
                 </p>
 
                 {/* --------------Divider----------- */}
-                <div class="divider">OR</div>
+                <div className="divider">OR</div>
                 {/* -----------Social Login--------- */}
                 <button className="btn btn-outline">
                   Continue with Google

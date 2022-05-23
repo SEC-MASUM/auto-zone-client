@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <div>
       <div
-        class="hero min-h-[20vh]"
+        className="hero min-h-[20vh]"
         style={{
           backgroundImage: `url(${bg})`,
           backgroundRepeat: "no-repeat",
@@ -12,10 +12,10 @@ const Hero = () => {
           backgroundPosition: "center",
         }}
       >
-        <div class="hero-overlay bg-gray-800 bg-opacity-50"></div>
-        <div class="hero-content text-center text-white">
-          <div class="max-w-md">
-            <h1 class="mb-5 text-5xl font-bold">Purchase</h1>
+        <div className="hero-overlay bg-gray-800 bg-opacity-50"></div>
+        <div className="hero-content text-center text-white">
+          <div className="max-w-md">
+            <h1 className="mb-5 text-5xl font-bold">Purchase</h1>
           </div>
         </div>
       </div>
