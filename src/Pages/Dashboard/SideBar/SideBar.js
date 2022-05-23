@@ -5,13 +5,13 @@ const SideBar = () => {
   return (
     <>
       <li>
-        <Link to="/dashboard/profile">My Profile</Link>
-      </li>
-      <li>
         <Link to="/dashboard">My Orders</Link>
       </li>
       <li>
         <Link to="/dashboard/addReview">Add Review</Link>
+      </li>
+      <li>
+        <Link to="/dashboard/profile">My Profile</Link>
       </li>
       <li>
         <Link to="/dashboard/manageOrders">Manage Orders</Link>
