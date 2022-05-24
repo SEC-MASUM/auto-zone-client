@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {
@@ -8,6 +8,7 @@ import {
 import bg from "../../../Assets/images/banner/slider-1.jpg";
 import auth from "../../../Firebase/Firebase.init";
 import Loading from "../Loading/Loading";
+import useJWTToken from "../../../Hooks/useJWTToken";
 const Login = () => {
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
@@ -18,11 +19,20 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const [userToken] = useJWTToken(googleUser || emailUser);
+
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-
   let errorElement;
+
+  useEffect(() => {
+    if (userToken) {
+      navigate(from, { replace: true });
+      // console.log(googleUser || emailUser);
+    }
+  }, [from, userToken, navigate]);
+
   if (googleError || emailError) {
     errorElement = (
       <p className="text-red-500">
@@ -34,12 +44,12 @@ const Login = () => {
     return <Loading />;
   }
 
-  if (googleUser || emailUser) {
-    navigate(from, { replace: true });
-    console.log(googleUser || emailUser);
-  }
+  // if (userToken) {
+  //   navigate(from, { replace: true });
+  //   // console.log(googleUser || emailUser);
+  // }
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     await signInWithEmailAndPassword(data.email, data.password);
   };
   return (

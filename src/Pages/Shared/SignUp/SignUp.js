@@ -1,6 +1,7 @@
-import { async } from "@firebase/util";
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import {
+  useAuthState,
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
   useUpdateProfile,
@@ -17,6 +18,7 @@ const SignUp = () => {
   const [createUserWithEmailAndPassword, emailUser, emailLoading, emailError] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const [user, loading] = useAuthState(auth);
   const {
     register,
     handleSubmit,
@@ -27,29 +29,41 @@ const SignUp = () => {
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-
   let errorMessage;
+
   if (googleError || emailError || updateError) {
     errorMessage =
       googleError?.message || emailError?.message || updateError?.message;
     setErrorElement(errorMessage);
   }
-  if (googleLoading || emailLoading || updating) {
+  if (googleLoading || emailLoading || updating || loading) {
     return <Loading />;
   }
 
-  if (googleUser || emailUser) {
+  if (user) {
+    const email = user.email;
+    const userData = {
+      email: email,
+    };
+    const url = `http://localhost:5000/user/${email}`;
+    (async () => {
+      await axios.put(url, userData).then((res) => {
+        const accessToken = res.data.accessToken;
+        localStorage.setItem("accessToken", accessToken);
+        console.log(accessToken);
+      });
+    })();
     navigate(from, { replace: true });
-    console.log(googleUser || emailUser);
   }
+
   const onSubmit = async (data) => {
-    console.log(data);
+    const userName = data.name;
     if (data.password === data.confirmPassword) {
       await createUserWithEmailAndPassword(data.email, data.password);
+      await updateProfile({ displayName: data.name });
       toast.info("Sent email verification", {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
-      await updateProfile({ displayName: data.name });
     } else {
       errorMessage = "Please Confirm your Password";
       setErrorElement(errorMessage);
