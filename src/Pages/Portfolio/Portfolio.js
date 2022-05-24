@@ -1,10 +1,14 @@
 import React from "react";
+import Navbar from "../Shared/Navbar/Navbar";
 
 const Portfolio = () => {
   return (
-    <div>
-      <h2>Portfolio</h2>
-    </div>
+    <>
+      <Navbar />
+      <div>
+        <h2>Portfolio</h2>
+      </div>
+    </>
   );
 };
 

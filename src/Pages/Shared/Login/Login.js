@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import {
   useSignInWithEmailAndPassword,
@@ -19,6 +19,8 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   let errorElement;
   if (googleError || emailError) {
@@ -33,7 +35,7 @@ const Login = () => {
   }
 
   if (googleUser || emailUser) {
-    navigate("/");
+    navigate(from, { replace: true });
     console.log(googleUser || emailUser);
   }
   const onSubmit = async (data) => {
@@ -52,7 +54,7 @@ const Login = () => {
         }}
       >
         <div className="hero-overlay bg-opacity-60">
-          <div className="min-h-screen max-h-fit flex justify-center items-center my-10 px-2">
+          <div className="min-h-screen max-h-fit flex justify-center items-center py-10 px-2">
             <div className="card w-full md:max-w-sm shadow-2xl glass ">
               <div className="card-body">
                 <h2 className="text-primary text-2xl font-bold">Login</h2>

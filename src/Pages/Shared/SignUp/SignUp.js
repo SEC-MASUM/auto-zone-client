@@ -6,7 +6,7 @@ import {
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import bg from "../../../Assets/images/banner/slider-1.jpg";
 import auth from "../../../Firebase/Firebase.init";
@@ -25,6 +25,8 @@ const SignUp = () => {
   const [errorElement, setErrorElement] = useState("");
 
   const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/";
 
   let errorMessage;
   if (googleError || emailError || updateError) {
@@ -37,7 +39,7 @@ const SignUp = () => {
   }
 
   if (googleUser || emailUser) {
-    navigate("/");
+    navigate(from, { replace: true });
     console.log(googleUser || emailUser);
   }
   const onSubmit = async (data) => {
@@ -66,7 +68,7 @@ const SignUp = () => {
         }}
       >
         <div className="hero-overlay bg-opacity-60">
-          <div className="min-h-screen max-h-fit flex justify-center items-center my-10 px-2">
+          <div className="min-h-screen max-h-fit flex justify-center items-center py-10 px-2">
             <div className="card w-full md:max-w-sm shadow-2xl glass ">
               <div className="card-body">
                 <h2 className="text-primary text-2xl font-bold">Sign Up</h2>

@@ -18,20 +18,34 @@ import UserRole from "./Pages/Dashboard/UserRole/UserRole";
 import ManageProducts from "./Pages/Dashboard/ManageProducts/ManageProducts";
 import Login from "./Pages/Shared/Login/Login";
 import SignUp from "./Pages/Shared/SignUp/SignUp";
+import RequireAuth from "./Pages/Shared/RequireAuth/RequireAuth";
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/purchase" element={<Purchase />} />
+        <Route
+          path="/purchase"
+          element={
+            <RequireAuth>
+              <Purchase />
+            </RequireAuth>
+          }
+        />
         <Route path="/products" element={<Products />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        >
           <Route index element={<MyOrders />} />
           <Route path="profile" element={<Profile />} />
           <Route path="addReview" element={<AddReview />} />
