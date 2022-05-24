@@ -19,7 +19,7 @@ const Navbar = () => {
   if (loading) {
     return <Loading />;
   }
-  console.log(user);
+  // console.log(user);
   const menuItems = (
     <>
       <li>
