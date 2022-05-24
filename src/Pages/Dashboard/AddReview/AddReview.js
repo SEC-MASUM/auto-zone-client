@@ -1,15 +1,40 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { toast } from "react-toastify";
+import auth from "../../../Firebase/Firebase.init";
 
 const AddReview = () => {
+  const [user] = useAuthState(auth);
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(event.target.review?.value, event.target.rating?.value);
+    const review = {
+      userName: user.displayName,
+      email: user.email,
+      rating: event.target.rating?.value,
+      review: event.target.review?.value,
+    };
+    fetch("http://localhost:5000/review", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+      body: JSON.stringify(review),
+    })
+      .then((res) => res.json())
+      .then((inserted) => {
+        if (inserted.insertedId) {
+          toast.success("Review added successfully");
+          event.target.reset();
+        } else {
+          toast.error("Failed to add the review");
+        }
+      });
   };
 
   return (
     <div>
-      {" "}
-      h-10 w-10
       <div className="hero">
         <div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-base-100">
           <div className="card-body">
@@ -26,36 +51,31 @@ const AddReview = () => {
                     type="radio"
                     name="rating"
                     value="1"
-                    className="mask mask-star-2   h-10 w-10
- bg-orange-400"
+                    className="mask mask-star-2  h-10 w-10 bg-orange-400"
                   />
                   <input
                     type="radio"
                     name="rating"
                     value="2"
-                    className="mask mask-star-2   h-10 w-10
- bg-orange-400"
+                    className="mask mask-star-2   h-10 w-10 bg-orange-400"
                   />
                   <input
                     type="radio"
                     name="rating"
                     value="3"
-                    className="mask mask-star-2   h-10 w-10
- bg-orange-400"
+                    className="mask mask-star-2   h-10 w-10 bg-orange-400"
                   />
                   <input
                     type="radio"
                     name="rating"
                     value="4"
-                    className="mask mask-star-2   h-10 w-10
- bg-orange-400"
+                    className="mask mask-star-2   h-10 w-10 bg-orange-400"
                   />
                   <input
                     type="radio"
                     name="rating"
                     value="5"
-                    className="mask mask-star-2   h-10 w-10
- bg-orange-400"
+                    className="mask mask-star-2   h-10 w-10 bg-orange-400"
                   />
                 </div>
               </div>
