@@ -9,13 +9,17 @@ import Loading from "../Loading/Loading";
 const Navbar = () => {
   const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
+
   const logout = () => {
     signOut(auth);
+    localStorage.removeItem("accessToken");
     navigate("/");
   };
+
   if (loading) {
     return <Loading />;
   }
+  console.log(user);
   const menuItems = (
     <>
       <li>
