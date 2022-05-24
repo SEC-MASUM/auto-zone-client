@@ -1,15 +1,44 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import bg from "../../../Assets/images/banner/slider-1.jpg";
+import auth from "../../../Firebase/Firebase.init";
+import Loading from "../Loading/Loading";
 const Login = () => {
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+  const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] =
+    useSignInWithEmailAndPassword(auth);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+  const navigate = useNavigate();
+
+  let errorElement;
+  if (googleError || emailError) {
+    errorElement = (
+      <p className="text-red-500">
+        <small>{googleError?.message || emailError?.message}</small>
+      </p>
+    );
+  }
+  if (googleLoading || emailLoading) {
+    return <Loading />;
+  }
+
+  if (googleUser || emailUser) {
+    navigate("/");
+    console.log(googleUser || emailUser);
+  }
+  const onSubmit = async (data) => {
     console.log(data);
+    await signInWithEmailAndPassword(data.email, data.password);
   };
   return (
     <div>
@@ -36,20 +65,32 @@ const Login = () => {
                       <span className="label-text">Email</span>
                     </label>
                     <input
-                      type="text"
+                      type="email"
                       placeholder="Email"
                       className="input input-bordered glass"
-                      {...register("email", { required: true })}
+                      {...register("email", {
+                        required: {
+                          value: true,
+                          message: "Email is required",
+                        },
+                        pattern: {
+                          value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
+                          message: "Please enter a valid email",
+                        },
+                      })}
                     />
                     {/* errors will return when field validation fails  */}
                     <label className="label">
-                      <span className="label-text-alt">
-                        {errors.email && (
-                          <span className="text-primary">
-                            This field is required
-                          </span>
-                        )}
-                      </span>
+                      {errors.email?.type === "required" && (
+                        <span className="label-text-alt  text-red-600">
+                          {errors.email?.message}
+                        </span>
+                      )}
+                      {errors.email?.type === "pattern" && (
+                        <span className="label-text-alt  text-red-600">
+                          {errors.email?.message}
+                        </span>
+                      )}
                     </label>
                   </div>
                   {/* -------------Password Field--------------- */}
@@ -58,19 +99,31 @@ const Login = () => {
                       <span className="label-text">Password</span>
                     </label>
                     <input
-                      type="text"
+                      type="password"
                       placeholder="Password"
                       className="input input-bordered glass"
-                      {...register("password", { required: true })}
+                      {...register("password", {
+                        required: {
+                          value: true,
+                          message: "Password is required",
+                        },
+                        minLength: {
+                          value: 6,
+                          message: "Password must be 6 character or longer",
+                        },
+                      })}
                     />
                     <label className="label">
-                      <span className="label-text-alt">
-                        {errors.password && (
-                          <span className="text-primary">
-                            This field is required
-                          </span>
-                        )}
-                      </span>
+                      {errors.password?.type === "required" && (
+                        <span className="label-text-alt text-red-500">
+                          {errors.password.message}
+                        </span>
+                      )}
+                      {errors.password?.type === "minLength" && (
+                        <span className="label-text-alt text-red-500">
+                          {errors.password.message}
+                        </span>
+                      )}
                     </label>
                     {/* -----------Forget Password--------- */}
                     <label className="label">
@@ -79,7 +132,9 @@ const Login = () => {
                       </Link>
                     </label>
                   </div>
-                  {/* -------------------------- */}
+                  {/* -------------------Error Section------------- */}
+                  <label className="label">{errorElement}</label>
+                  {/* --------------Login------------ */}
                   <div className="form-control mt-6">
                     <input
                       type="submit"
@@ -100,7 +155,10 @@ const Login = () => {
                 {/* --------------Divider----------- */}
                 <div className="divider">OR</div>
                 {/* -----------Social Login--------- */}
-                <button className="btn btn-outline">
+                <button
+                  onClick={() => signInWithGoogle()}
+                  className="btn btn-outline"
+                >
                   Continue with Google
                 </button>
               </div>

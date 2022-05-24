@@ -1,8 +1,21 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../Assets/images/Logo.png";
+import auth from "../../../Firebase/Firebase.init";
+import Loading from "../Loading/Loading";
 const Navbar = () => {
+  const [user, loading] = useAuthState(auth);
+  const navigate = useNavigate();
+  const logout = () => {
+    signOut(auth);
+    navigate("/");
+  };
+  if (loading) {
+    return <Loading />;
+  }
   const menuItems = (
     <>
       <li>
@@ -20,9 +33,25 @@ const Navbar = () => {
       <li>
         <Link to="/blogs">Blogs</Link>
       </li>
-      <li>
-        <Link to="/login">Login</Link>
-      </li>
+      {!user && (
+        <li>
+          <Link to="/login">Login</Link>
+        </li>
+      )}
+      {user && (
+        <>
+          <li>
+            <Link to="/" className="whitespace-nowrap">
+              {user.displayName}
+            </Link>
+          </li>
+          <li>
+            <Link onClick={logout} to="/" className="whitespace-nowrap">
+              Sign Out
+            </Link>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -36,7 +65,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex="0"
-                className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                className="menu menu-compact dropdown-content  mt-3 p-2 shadow bg-base-100 rounded-box w-52"
               >
                 {menuItems}
               </ul>
@@ -50,6 +79,7 @@ const Navbar = () => {
           </div>
           <div className="navbar-end lg:hidden">
             <label
+              tabIndex="1"
               htmlFor="dashboard-sidebar"
               className="btn btn-neutral drawer-button "
             >
