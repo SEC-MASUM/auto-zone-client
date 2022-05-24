@@ -1,6 +1,24 @@
+import axios from "axios";
 import React from "react";
+import { useQuery } from "react-query";
+import Loading from "../../Shared/Loading/Loading";
+import UserRow from "./UserRow/UserRow";
 
 const UserRole = () => {
+  // const { data: users, isLoading } = useQuery("users", () =>
+  //   fetch("http://localhost:5000/user").then((res) => res.json())
+  // );
+
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useQuery("users", () => axios.get(`http://localhost:5000/user`));
+  console.log(users);
+  if (isLoading) {
+    return <Loading />;
+  }
+  // console.log(users);
   return (
     <div>
       <h1>User Role</h1>
@@ -9,23 +27,20 @@ const UserRole = () => {
           <thead>
             <tr className="text-center">
               <th></th>
-              <th>Name</th>
               <th>email</th>
               <th>Role</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr className="text-center">
-              <th>1</th>
-              <td>Ganderton</td>
-              <td>emai@gmail.com</td>
-              <td className="text-green-500">Admin</td>
-              <td className="space-x-2">
-                <span className=" btn btn-sm btn-success">Make Admin </span>
-                <span className="btn btn-sm btn-primary">Remove Admin</span>
-              </td>
-            </tr>
+            {users.data.map((user, index) => (
+              <UserRow
+                key={user._id}
+                index={index}
+                user={user}
+                refetch={refetch}
+              />
+            ))}
           </tbody>
         </table>
       </div>
