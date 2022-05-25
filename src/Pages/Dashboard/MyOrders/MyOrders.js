@@ -1,6 +1,25 @@
+import axios from "axios";
 import React from "react";
+import { useQuery } from "react-query";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../../Firebase/Firebase.init";
+import Loading from "../../Shared/Loading/Loading";
+import MyOrderRow from "./MyOrderRow/MyOrderRow";
 
 const MyOrders = () => {
+  const [user, loading] = useAuthState(auth);
+
+  const {
+    data: myOrders,
+    isLoading,
+    refetch,
+  } = useQuery(["myOrders", user.email], () =>
+    axios.get(`http://localhost:5000/order/${user.email}`)
+  );
+
+  if (isLoading || loading) {
+    return <Loading />;
+  }
   return (
     <div>
       <h1>My Orders</h1>
@@ -11,6 +30,7 @@ const MyOrders = () => {
               <th></th>
               <th>Product Name</th>
               <th>Quantity</th>
+              <th>Unit Price</th>
               <th>Total Price</th>
               <th>Status</th>
               <th>Action</th>
@@ -18,28 +38,14 @@ const MyOrders = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="text-center">
-              <th>1</th>
-              <td>Ganderton</td>
-              <td>5000</td>
-              <td>$345</td>
-              <td className="font-medium">
-                <span className="text-warning">Unpaid </span>
-                <span className="text-success">|| Paid</span>{" "}
-                <span className="text-info">|| Shipped</span>
-              </td>
-              <td>
-                <div className="space-x-2">
-                  <button className="btn btn-sm btn-warning">Cancel</button>
-                  <button className="btn btn-sm btn-success">Pay</button>
-                </div>
-              </td>
-              <td>
-                <span className="text-orange-600 font-medium">
-                  Transaction ID
-                </span>
-              </td>
-            </tr>
+            {myOrders.data.map((order, index) => (
+              <MyOrderRow
+                key={order._id}
+                index={index}
+                order={order}
+                refetch={refetch}
+              />
+            ))}
           </tbody>
         </table>
       </div>
