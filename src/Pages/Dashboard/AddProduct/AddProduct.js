@@ -3,8 +3,6 @@ import { AiFillPieChart } from "react-icons/ai";
 import { IoMdSpeedometer } from "react-icons/io";
 import { toast } from "react-toastify";
 
-
-
 const AddProduct = () => {
   const handleAddProduct = (event) => {
     event.preventDefault();
@@ -60,10 +58,8 @@ const AddProduct = () => {
                     name="name"
                     placeholder="Name"
                     class="input input-bordered w-full max-w-xs"
+                    required
                   />
-                  <label class="label">
-                    <span class="label-text-alt">Alt label</span>
-                  </label>
                 </div>
                 <div class="form-control">
                   <label class="label">
@@ -74,9 +70,6 @@ const AddProduct = () => {
                     class="textarea textarea-bordered h-24"
                     placeholder="Description"
                   ></textarea>
-                  <label class="label">
-                    <span class="label-text-alt">Your bio</span>
-                  </label>
                 </div>
 
                 <div className="flex gap-5 py-4  text-sm font-medium text-gray-500">
@@ -94,6 +87,7 @@ const AddProduct = () => {
                       defaultValue="1"
                       min="1"
                       class="input input-sm input-bordered w-full max-w-xs"
+                      required
                     />
                   </div>
                   <div class="form-control w-full max-w-xs">
@@ -110,6 +104,7 @@ const AddProduct = () => {
                       defaultValue="0"
                       min="0"
                       class="input input-sm input-bordered w-full max-w-xs"
+                      required
                     />
                   </div>
                 </div>
@@ -124,6 +119,7 @@ const AddProduct = () => {
                       min="1"
                       max="10000000"
                       className="input input-sm rounded-full font-medium bg-red-500 text-lg text-white max-w-xs "
+                      required
                     />
                   </div>
                   <div className="bg-white px-4 py-2 shadow-sm tracking-wider border text-gray-600 rounded-full hover:bg-gray-100 inline-flex items-center space-x-2 ">
@@ -134,7 +130,8 @@ const AddProduct = () => {
                       placeholder="%"
                       min="0"
                       max="100"
-                      className="input input-sm rounded-full font-medium bg-accent text-lg text-secondary max-w-xs "
+                      className="input input-sm rounded-full font-medium bg-accent text-lg text-secondary max-w-xs"
+                      required
                     />
                   </div>
                 </div>
@@ -155,6 +152,7 @@ const AddProduct = () => {
                       name="image"
                       type="text"
                       className="flex items-center py-2 input  rounded font-medium  max-w-xs my-2"
+                      required
                     />
                   </div>
                 </div>
