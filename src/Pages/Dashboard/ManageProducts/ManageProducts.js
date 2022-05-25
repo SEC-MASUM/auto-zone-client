@@ -1,6 +1,24 @@
+import axios from "axios";
 import React from "react";
+import { useQuery } from "react-query";
+import useProducts from "../../../Hooks/useProducts";
+import Loading from "../../Shared/Loading/Loading";
+import ProductRow from "./ProductRow/ProductRow";
 
 const ManageProducts = () => {
+  const { products, isLoading, refetch } = useProducts();
+  if (isLoading) {
+    return <Loading />;
+  }
+  // const {
+  //   data: products,
+  //   isLoading,
+  //   refetch,
+  // } = useQuery("products", () => axios.get(`http://localhost:5000/product`));
+  // console.log(products);
+  // if (isLoading) {
+  //   return <Loading />;
+  // }
   return (
     <div>
       <h1>Manage Products</h1>
@@ -18,34 +36,14 @@ const ManageProducts = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="text-center">
-              <th>1</th>
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="https://api.lorem.space/image/face?hash=80245"
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">Product Name</div>
-                  </div>
-                </div>
-              </td>
-              <td>Description</td>
-              <td>Min Qty 5000</td>
-              <td>Available Qty 10000</td>
-              <td>Price $345</td>
-              <td>
-                <div className="space-x-2">
-                  <button className="btn btn-sm btn-success">Edit</button>
-                  <button className="btn btn-sm btn-primary">Delete</button>
-                </div>
-              </td>
-            </tr>
+            {products.data.map((product, index) => (
+              <ProductRow
+                key={product._id}
+                index={index}
+                product={product}
+                refetch={refetch}
+              />
+            ))}
           </tbody>
         </table>
       </div>
