@@ -1,8 +1,9 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product, index, refetch }) => {
-  const { name, description, minOrder, availableQty, price, image } = product;
+  const { _id, name, description, minOrder, availableQty, price, image } =
+    product;
   return (
     <div className="flex justify-center ">
       <div className="card card-compact w-9/12 md:w-full lg:max-w-lg bg-base-100 shadow-xl">
@@ -37,7 +38,7 @@ const ProductCard = ({ product, index, refetch }) => {
           </div>
           <div className="card-actions justify-end">
             <Link
-              to="/purchase"
+              to={`/purchase/${_id}`}
               className="btn btn-neutral hover:btn-primary hover:text-white w-full rounded-full"
             >
               Purchase Now
