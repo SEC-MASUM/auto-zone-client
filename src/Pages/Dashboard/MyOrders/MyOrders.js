@@ -5,6 +5,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/Firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import MyOrderRow from "./MyOrderRow/MyOrderRow";
+import { toast } from "react-toastify";
 
 const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
@@ -20,6 +21,20 @@ const MyOrders = () => {
   if (isLoading || loading) {
     return <Loading />;
   }
+  const handleDelete = (id) => {
+    (async () => {
+      const url = `http://localhost:5000/order/${id}`;
+      console.log(url);
+      const result = await axios.delete(url);
+      console.log(result);
+      if (result.data.deletedCount) {
+        toast.success(`Deleted Successfully`);
+        refetch();
+      } else {
+        toast.success(`Failed to delete`);
+      }
+    })();
+  };
   return (
     <div>
       <h1>My Orders</h1>
@@ -44,6 +59,7 @@ const MyOrders = () => {
                 index={index}
                 order={order}
                 refetch={refetch}
+                handleDelete={handleDelete}
               />
             ))}
           </tbody>

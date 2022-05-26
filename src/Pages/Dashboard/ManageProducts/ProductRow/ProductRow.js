@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import DeleteModal from "../../../../Components/DeleteModal/DeleteModal";
 
-const ProductRow = ({ product, index, refetch }) => {
-  const { name, description, minOrder, availableQty, price, image } = product;
+const ProductRow = ({ product, index, refetch, handleDelete }) => {
+  const { _id, name, description, minOrder, availableQty, price, image } =
+    product;
   return (
     <tr className="text-center">
       <th>1</th>
@@ -18,13 +20,15 @@ const ProductRow = ({ product, index, refetch }) => {
         </div>
       </td>
       <td title={description}>Description</td>
-      <td >{minOrder}</td>
+      <td>{minOrder}</td>
       <td>{availableQty}</td>
       <td>{price}</td>
       <td>
         <div className="space-x-2">
           <button className="btn btn-sm btn-success">Edit</button>
-          <button className="btn btn-sm btn-primary">Delete</button>
+          <DeleteModal id={_id} name={name} handleDelete={handleDelete}>
+            Delete
+          </DeleteModal>
         </div>
       </td>
     </tr>

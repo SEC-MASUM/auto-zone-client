@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
+import { toast } from "react-toastify";
 import useProducts from "../../../Hooks/useProducts";
 import Loading from "../../Shared/Loading/Loading";
 import ProductRow from "./ProductRow/ProductRow";
@@ -19,6 +20,17 @@ const ManageProducts = () => {
   // if (isLoading) {
   //   return <Loading />;
   // }
+  const handleDelete = (id) => {
+    (async () => {
+      const url = `http://localhost:5000/product/${id}`;
+      const result = await axios.delete(url);
+      console.log(result);
+      if (result.data.deletedCount) {
+        toast.success(`Deleted Successfully`);
+        refetch();
+      }
+    })();
+  };
   return (
     <div>
       <h1>Manage Products</h1>
@@ -42,6 +54,7 @@ const ManageProducts = () => {
                 index={index}
                 product={product}
                 refetch={refetch}
+                handleDelete={handleDelete}
               />
             ))}
           </tbody>
