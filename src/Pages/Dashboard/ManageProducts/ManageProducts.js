@@ -11,26 +11,24 @@ const ManageProducts = () => {
   if (isLoading) {
     return <Loading />;
   }
-  // const {
-  //   data: products,
-  //   isLoading,
-  //   refetch,
-  // } = useQuery("products", () => axios.get(`http://localhost:5000/product`));
-  // console.log(products);
-  // if (isLoading) {
-  //   return <Loading />;
-  // }
-  const handleDelete = (id) => {
-    (async () => {
-      const url = `http://localhost:5000/product/${id}`;
-      const result = await axios.delete(url);
-      console.log(result);
-      if (result.data.deletedCount) {
-        toast.success(`Deleted Successfully`);
-        refetch();
-      }
-    })();
-  };
+
+  // const handleDelete = (id) => {
+  //   (async () => {
+  //     const url = `http://localhost:5000/product/${id}`;
+  //     console.log(url);
+  //     const result = await axios.delete(url, {
+  //       headers: {
+  //         "content-type": "application/json",
+  //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+  //       },
+  //     });
+  //     console.log(result);
+  //     if (result.data.deletedCount) {
+  //       toast.success(`Deleted Successfully`);
+  //       refetch();
+  //     }
+  //   })();
+  // };
   return (
     <div>
       <h1>Manage Products</h1>
@@ -54,7 +52,7 @@ const ManageProducts = () => {
                 index={index}
                 product={product}
                 refetch={refetch}
-                handleDelete={handleDelete}
+                // handleDelete={handleDelete}
               />
             ))}
           </tbody>

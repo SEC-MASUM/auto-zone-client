@@ -15,7 +15,12 @@ const MyOrders = () => {
     isLoading,
     refetch,
   } = useQuery(["myOrders", user.email], () =>
-    axios.get(`http://localhost:5000/order/${user.email}`)
+    axios.get(`http://localhost:5000/order/${user.email}`, {
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
   );
 
   if (isLoading || loading) {
@@ -25,7 +30,12 @@ const MyOrders = () => {
     (async () => {
       const url = `http://localhost:5000/order/${id}`;
       console.log(url);
-      const result = await axios.delete(url);
+      const result = await axios.delete(url, {
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+      });
       console.log(result);
       if (result.data.deletedCount) {
         toast.success(`Deleted Successfully`);
