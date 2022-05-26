@@ -5,7 +5,6 @@ import DeleteModal from "../../../../Components/DeleteModal/DeleteModal";
 const MyOrderRow = ({ order, index, refetch, handleDelete }) => {
   const { _id, email, name, orderQty, price, totalPrice, status, image } =
     order;
-  // console.log(order);
   return (
     <tr className="text-center">
       <th>{index + 1}</th>
@@ -37,15 +36,21 @@ const MyOrderRow = ({ order, index, refetch, handleDelete }) => {
               <DeleteModal id={_id} name={name} handleDelete={handleDelete}>
                 Cancel
               </DeleteModal>
-              <Link to={`/payment/${_id}`} className="btn btn-sm btn-success">
-                Pay
-              </Link>
             </>
           )}
+          {
+            <Link
+              to={`/payment/${_id}`}
+              disabled={status!=="unpaid"}
+              className="btn btn-sm btn-success"
+            >
+              Pay
+            </Link>
+          }
         </div>
       </td>
       <td>
-        {status === "paid" && (
+        {(status === "paid" || status === "shipped") && (
           <p>
             Transaction ID: <br />
             <span className="text-orange-600 font-medium">
