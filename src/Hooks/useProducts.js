@@ -7,7 +7,7 @@ const useProducts = () => {
     isLoading,
     refetch,
   } = useQuery("products", () => axios.get(`http://localhost:5000/product`));
-  console.log(products);
+  // console.log(products);
 
   return { products, isLoading, refetch };
 };
