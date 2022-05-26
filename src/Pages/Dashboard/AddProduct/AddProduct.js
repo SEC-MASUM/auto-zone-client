@@ -49,33 +49,33 @@ const AddProduct = () => {
             </div>
             <form onSubmit={handleAddProduct}>
               <div className="w-full py-2">
-                <div class="form-control w-full max-w-xs">
-                  <label class="label">
-                    <span class="label-text">Product Name</span>
+                <div className="form-control w-full max-w-xs">
+                  <label className="label">
+                    <span className="label-text">Product Name</span>
                   </label>
                   <input
                     type="text"
                     name="name"
                     placeholder="Name"
-                    class="input input-bordered w-full max-w-xs"
+                    className="input input-bordered w-full max-w-xs"
                     required
                   />
                 </div>
-                <div class="form-control">
-                  <label class="label">
-                    <span class="label-text">Product Description</span>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Product Description</span>
                   </label>
                   <textarea
                     name="description"
-                    class="textarea textarea-bordered h-24"
+                    className="textarea textarea-bordered h-24"
                     placeholder="Description"
                   ></textarea>
                 </div>
 
                 <div className="flex gap-5 py-4  text-sm font-medium text-gray-500">
-                  <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                      <span class="label-text flex gap-2">
+                  <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                      <span className="label-text flex gap-2">
                         Minimum Order{" "}
                         <IoMdSpeedometer className="h-5 w-5 text-gray-400" />
                       </span>
@@ -86,13 +86,13 @@ const AddProduct = () => {
                       type="number"
                       defaultValue="1"
                       min="1"
-                      class="input input-sm input-bordered w-full max-w-xs"
+                      className="input input-sm input-bordered w-full max-w-xs"
                       required
                     />
                   </div>
-                  <div class="form-control w-full max-w-xs">
-                    <label class="label">
-                      <span class="label-text flex gap-2">
+                  <div className="form-control w-full max-w-xs">
+                    <label className="label">
+                      <span className="label-text flex gap-2">
                         Available Qty{" "}
                         <AiFillPieChart className="h-5 w-5 text-gray-400" />
                       </span>
@@ -103,7 +103,7 @@ const AddProduct = () => {
                       type="number"
                       defaultValue="0"
                       min="0"
-                      class="input input-sm input-bordered w-full max-w-xs"
+                      className="input input-sm input-bordered w-full max-w-xs"
                       required
                     />
                   </div>
@@ -136,17 +136,17 @@ const AddProduct = () => {
                   </div>
                 </div>
                 <div className="flex my-2 border-t-2 border-t border-gray-300"></div>
-                <div class="flex w-full my-5">
+                <div className="flex w-full my-5">
                   <input
                     type="file"
                     className="flex items-center py-2 input  rounded font-medium  max-w-xs my-2"
                   />
 
-                  <div class="divider divider-horizontal">OR</div>
+                  <div className="divider divider-horizontal">OR</div>
 
                   <div className="flex">
-                    <label class="label">
-                      <span class="label-text">Photo URL</span>
+                    <label className="label">
+                      <span className="label-text">Photo URL</span>
                     </label>
                     <input
                       name="image"
