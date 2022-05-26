@@ -6,15 +6,11 @@ import useProducts from "../../Hooks/useProducts";
 
 const Products = () => {
   const { products, isLoading, refetch } = useProducts();
-  // const {
-  //   data: products,
-  //   isLoading,
-  //   refetch,
-  // } = useQuery("products", () => axios.get(`http://localhost:5000/product`));
-  // console.log(products);
+
   if (isLoading) {
     return <Loading />;
   }
+
   return (
     <>
       <Navbar />
