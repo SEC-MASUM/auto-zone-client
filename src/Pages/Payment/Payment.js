@@ -18,7 +18,12 @@ const Payment = () => {
     isLoading,
     refetch,
   } = useQuery(["order", id], () =>
-    axios.get(`http://localhost:5000/payment/order/${id}`)
+    axios.get(`http://localhost:5000/payment/order/${id}`, {
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
   );
 
   if (isLoading || loading) {

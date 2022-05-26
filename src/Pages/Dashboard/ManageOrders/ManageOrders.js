@@ -9,7 +9,14 @@ const ManageOrders = () => {
     data: orders,
     isLoading,
     refetch,
-  } = useQuery("orders", () => axios.get(`http://localhost:5000/order`));
+  } = useQuery("orders", () =>
+    axios.get(`http://localhost:5000/order`, {
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+  );
 
   if (isLoading) {
     return <Loading />;

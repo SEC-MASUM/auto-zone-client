@@ -13,7 +13,14 @@ const UserRole = () => {
     data: users,
     isLoading,
     refetch,
-  } = useQuery("users", () => axios.get(`http://localhost:5000/user`));
+  } = useQuery("users", () =>
+    axios.get(`http://localhost:5000/user`, {
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+  );
   console.log(users);
   if (isLoading) {
     return <Loading />;

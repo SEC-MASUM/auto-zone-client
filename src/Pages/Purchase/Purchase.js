@@ -3,7 +3,7 @@ import { IoMdSpeedometer } from "react-icons/io";
 import { AiFillPieChart } from "react-icons/ai";
 import Navbar from "../Shared/Navbar/Navbar";
 import Footer from "../Shared/Footer/Footer";
-import Hero from "../../Components/Hero/Hero"
+import Hero from "../../Components/Hero/Hero";
 import { useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import axios from "axios";
@@ -23,7 +23,12 @@ const Purchase = () => {
     isLoading,
     refetch,
   } = useQuery(["product", id], () =>
-    axios.get(`http://localhost:5000/product/${id}`)
+    axios.get(`http://localhost:5000/product/${id}`, {
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
   );
   if (isLoading || loading) {
     return <Loading />;

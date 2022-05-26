@@ -6,7 +6,14 @@ const useProducts = () => {
     data: products,
     isLoading,
     refetch,
-  } = useQuery("products", () => axios.get(`http://localhost:5000/product`));
+  } = useQuery("products", () =>
+    axios.get(`http://localhost:5000/product`, {
+      headers: {
+        "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+  );
   // console.log(products);
 
   return { products, isLoading, refetch };
