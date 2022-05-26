@@ -90,7 +90,7 @@ const CheckoutForm = ({ order }) => {
       setTransactionId(paymentIntent.id);
       setSuccess("Congrats! Your Payment is completed successfully");
       // Update Order in database
-      const payment = {
+      const order = {
         status: "paid",
         transactionId: paymentIntent.id,
       };
@@ -100,7 +100,7 @@ const CheckoutForm = ({ order }) => {
           "content-type": "application/json",
           authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
-        body: JSON.stringify(payment),
+        body: JSON.stringify(order),
       })
         .then((res) => res.json())
         .then((data) => {
