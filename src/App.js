@@ -19,6 +19,7 @@ import ManageProducts from "./Pages/Dashboard/ManageProducts/ManageProducts";
 import Login from "./Pages/Shared/Login/Login";
 import SignUp from "./Pages/Shared/SignUp/SignUp";
 import RequireAuth from "./Pages/Shared/RequireAuth/RequireAuth";
+import Payment from "./Pages/Payment/Payment";
 
 function App() {
   return (
@@ -30,6 +31,14 @@ function App() {
           element={
             <RequireAuth>
               <Purchase />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path="/payment/:id"
+          element={
+            <RequireAuth>
+              <Payment />
             </RequireAuth>
           }
         />
