@@ -1,6 +1,19 @@
+import axios from "axios";
 import React from "react";
+import { useQuery } from "react-query";
+import Loading from "../../Shared/Loading/Loading";
+import OrderRow from "./OrderRow/OrderRow";
 
 const ManageOrders = () => {
+  const {
+    data: orders,
+    isLoading,
+    refetch,
+  } = useQuery("orders", () => axios.get(`http://localhost:5000/order`));
+
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <div>
       <h1>Manage Orders</h1>
@@ -10,7 +23,8 @@ const ManageOrders = () => {
             <tr className="text-center">
               <th></th>
               <th>Product Name</th>
-              <th>Quantity</th>
+              <th>Order Qty</th>
+              <th>Unite Price</th>
               <th>Total Price</th>
               <th>Status</th>
               <th>Action</th>
@@ -18,27 +32,14 @@ const ManageOrders = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="text-center">
-              <th>1</th>
-              <td>Ganderton</td>
-              <td>5000</td>
-              <td>$345</td>
-              <td className="font-medium">
-                <span className="text-warning">Unpaid </span>
-                <span className="text-success">|| Paid</span>{" "}
-                <span className="text-info">|| Shipped</span>
-              </td>
-              <td>
-                <div>
-                  <button className="btn btn-sm btn-success">Ship Now</button>
-                </div>
-              </td>
-              <td>
-                <span className="text-orange-600 font-medium">
-                  Transaction ID
-                </span>
-              </td>
-            </tr>
+            {orders.data.map((order, index) => (
+              <OrderRow
+                key={order._id}
+                index={index}
+                order={order}
+                refetch={refetch}
+              />
+            ))}
           </tbody>
         </table>
       </div>
