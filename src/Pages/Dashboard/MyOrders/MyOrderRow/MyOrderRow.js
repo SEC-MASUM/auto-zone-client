@@ -3,7 +3,8 @@ import { Link, Navigate } from "react-router-dom";
 import DeleteModal from "../../../../Components/DeleteModal/DeleteModal";
 
 const MyOrderRow = ({ order, index, refetch, handleDelete }) => {
-  const { _id, email, name, orderQty, price, totalPrice, status, image } = order;
+  const { _id, email, name, orderQty, price, totalPrice, status, image } =
+    order;
   // console.log(order);
   return (
     <tr className="text-center">
@@ -26,7 +27,7 @@ const MyOrderRow = ({ order, index, refetch, handleDelete }) => {
       <td>{totalPrice}</td>
       <td className="font-medium">
         {status === "unpaid" && <span className="text-warning">Unpaid</span>}
-        {status === "paid" && <span className="text-success">Pending</span>}
+        {status === "paid" && <span className="text-success">Paid</span>}
         {status === "shipped" && <span className="text-info">Shipped</span>}
       </td>
       <td>
@@ -45,7 +46,12 @@ const MyOrderRow = ({ order, index, refetch, handleDelete }) => {
       </td>
       <td>
         {status === "paid" && (
-          <span className="text-orange-600 font-medium">Transaction ID</span>
+          <p>
+            Transaction ID: <br />
+            <span className="text-orange-600 font-medium">
+              {order?.transactionId}
+            </span>
+          </p>
         )}
       </td>
     </tr>

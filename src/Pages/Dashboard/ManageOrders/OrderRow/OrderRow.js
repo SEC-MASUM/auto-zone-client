@@ -26,7 +26,12 @@ const OrderRow = ({ order, index, refetch }) => {
       </td>
       <td>
         {status === "paid" && (
-          <span className="text-orange-600 font-medium">Transaction ID</span>
+          <p>
+            Transaction ID: <br />
+            <span className="text-orange-600 font-medium">
+              {order?.transactionId}
+            </span>
+          </p>
         )}
       </td>
     </tr>
