@@ -4,11 +4,18 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { IoMdSpeedometer } from "react-icons/io";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import Hero from "../../Components/Hero/Hero";
 import auth from "../../Firebase/Firebase.init";
 import Footer from "../Shared/Footer/Footer";
 import Loading from "../Shared/Loading/Loading";
 import Navbar from "../Shared/Navbar/Navbar";
+import CheckoutForm from "./CheckoutForm";
+
+const stripePromise = loadStripe(
+  "pk_test_51L1K18SECEnSWhNz9P00ol1AFf0sdb6WyvU5BUKbClbo7IlCmf1joCL6kUD4UgXGDeD8XaSqO9YUJHkfDr8UCdvR00FQIhoHeS"
+);
 
 const Payment = () => {
   const { id } = useParams();
@@ -29,7 +36,7 @@ const Payment = () => {
   if (isLoading || loading) {
     return <Loading />;
   }
-  
+
   const {
     _id,
     name,
@@ -47,20 +54,29 @@ const Payment = () => {
     <div>
       <Navbar />
       <Hero>Payment</Hero>
-      <h3 className="bg-accent text-secondary font-semibold text-xl py-3">
+      <h3 className="bg-accent text-secondary text-center font-semibold text-xl py-3">
         Order ID: {id}
       </h3>
+      {/* ----------------Payment Option-------------- */}
+      <div className="container mx-auto card min-w-min lg:max-w-lg bg-gray-100 shadow-xl my-4">
+        <div className="card-body">
+          <Elements stripe={stripePromise}>
+            <CheckoutForm order={order.data} />
+          </Elements>
+        </div>
+      </div>
+      {/* ---------------------- */}
       <div className="container mx-auto my-8">
         <div className="bg-gray-100 shadow-lg  rounded-3xl p-5">
           <div className="flex-none grid sm:grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="w-full">
+            <div className="w-full h-fit">
               <img
                 src={
                   image ||
                   "https://images.unsplash.com/photo-1622180203374-9524a54b734d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1950&amp;q=80"
                 }
                 alt="Just a flower"
-                className="w-full h-full object-scale-down lg:object-cover  rounded-2xl"
+                className="max-h-[400px] object-scale-down lg:object-fill   rounded-2xl"
               />
             </div>
             <div className="w-full py-2">
@@ -115,12 +131,11 @@ const Payment = () => {
                   </label>
                 </div>
               </div>
-              {/* ----------------Payment Option-------------- */}
-              
             </div>
           </div>
         </div>
       </div>
+
       <Footer />
     </div>
   );
