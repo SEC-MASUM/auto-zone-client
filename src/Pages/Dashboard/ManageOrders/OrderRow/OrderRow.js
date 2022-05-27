@@ -7,7 +7,9 @@ const OrderRow = ({ order, index, refetch }) => {
       status: "shipped",
       transactionId: order?.transactionId,
     };
-    fetch(`http://localhost:5000/payment/order/${_id}`, {
+    // const url = `http://localhost:5000/payment/order/${_id}`;
+    const url = `https://auto-zone-01.herokuapp.com/payment/order/${_id}`;
+    fetch(url, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",

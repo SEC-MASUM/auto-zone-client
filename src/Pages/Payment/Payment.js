@@ -20,12 +20,14 @@ const stripePromise = loadStripe(
 const Payment = () => {
   const { id } = useParams();
   const [user, loading] = useAuthState(auth);
+  // const url = `http://localhost:5000/payment/order/${id}`;
+  // const url = `https://auto-zone-01.herokuapp.com/payment/order/${id}`;
   const {
     data: order,
     isLoading,
     refetch,
   } = useQuery(["order", id], () =>
-    axios.get(`http://localhost:5000/payment/order/${id}`, {
+    axios.get(`https://auto-zone-01.herokuapp.com/payment/order/${id}`, {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -86,13 +88,14 @@ const Payment = () => {
 
               {/* ----------Price and Order Qty---------- */}
               <div className="text-left">
-                <h3 className="text-left">
-                  Unite Price : ${price}
-                </h3>
+                <h3 className="text-left">Unite Price : ${price}</h3>
 
                 <h4>Order Qty: {orderQty}</h4>
                 <p className="text-left text-2xl font-semibold">
-                  <span className=" text-green-500">Please pay : ${totalPrice}</span><span> to confirm your order.</span>
+                  <span className=" text-green-500">
+                    Please pay : ${totalPrice}
+                  </span>
+                  <span> to confirm your order.</span>
                 </p>
               </div>
               <div className="flex p-4 pb-2 border-t border-gray-200 "></div>

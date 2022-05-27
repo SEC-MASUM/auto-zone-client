@@ -4,7 +4,8 @@ import { toast } from "react-toastify";
 const UserRow = ({ user, index, refetch }) => {
   const { email, role } = user;
   const handleAdmin = () => {
-    const url = `http://localhost:5000/user/admin/${email}`;
+    // const url = `http://localhost:5000/user/admin/${email}`;
+    const url = `https://auto-zone-01.herokuapp.com/user/admin/${email}`;
     fetch(url, {
       method: "PUT",
       headers: {
@@ -28,7 +29,8 @@ const UserRow = ({ user, index, refetch }) => {
       });
   };
   const handleRemoveAdmin = () => {
-    const url = `http://localhost:5000/user/removeAdmin/${email}`;
+    // const url = `http://localhost:5000/user/removeAdmin/${email}`;
+    const url = `https://auto-zone-01.herokuapp.com/user/removeAdmin/${email}`;
     fetch(url, {
       method: "PUT",
       headers: {

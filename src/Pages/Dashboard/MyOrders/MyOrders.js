@@ -9,13 +9,14 @@ import { toast } from "react-toastify";
 
 const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
-
+  // const url = `https://auto-zone-01.herokuapp.com/order/${user.email}`;
+  // const url = `http://localhost:5000/order/${user.email}`;
   const {
     data: myOrders,
     isLoading,
     refetch,
   } = useQuery(["myOrders", user.email], () =>
-    axios.get(`http://localhost:5000/order/${user.email}`, {
+    axios.get(`https://auto-zone-01.herokuapp.com/order/${user.email}`, {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -8,7 +8,8 @@ const ProductRow = ({ product, index, refetch }) => {
     product;
   const handleDelete = () => {
     (async () => {
-      const url = `http://localhost:5000/product/${_id}`;
+      // const url = `http://localhost:5000/product/${_id}`;
+      const url = `https://auto-zone-01.herokuapp.com/product/${_id}`;
       console.log(url);
       const result = await axios.delete(url, {
         headers: {

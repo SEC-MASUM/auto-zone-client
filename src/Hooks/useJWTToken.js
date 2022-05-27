@@ -10,7 +10,8 @@ const useJWTToken = (user) => {
       email: email,
     };
     if (email) {
-      const url = `http://localhost:5000/user/${email}`;
+      // const url = `http://localhost:5000/user/${email}`;
+      const url = `https://auto-zone-01.herokuapp.com/user/${email}`;
       (async () => {
         await axios.put(url, userData).then((res) => {
           const accessToken = res.data.accessToken;

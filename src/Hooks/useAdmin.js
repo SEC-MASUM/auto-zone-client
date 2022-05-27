@@ -6,7 +6,8 @@ const useAdmin = (user) => {
   useEffect(() => {
     const email = user?.email;
     if (email) {
-      const url = `http://localhost:5000/user/admin/${email}`;
+      // const url = `http://localhost:5000/user/admin/${email}`;
+      const url = `https://auto-zone-01.herokuapp.com/user/admin/${email}`;
       fetch(url, {
         method: "GET",
         headers: {

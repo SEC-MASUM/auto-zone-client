@@ -5,12 +5,14 @@ import Loading from "../../Shared/Loading/Loading";
 import OrderRow from "./OrderRow/OrderRow";
 
 const ManageOrders = () => {
+  // const url = `http://localhost:5000/order`;
+  // const url = `https://auto-zone-01.herokuapp.com/order`;
   const {
     data: orders,
     isLoading,
     refetch,
   } = useQuery("orders", () =>
-    axios.get(`http://localhost:5000/order`, {
+    axios.get(`https://auto-zone-01.herokuapp.com/order`, {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,

@@ -15,7 +15,9 @@ const AddProduct = () => {
       image: event.target.image?.value,
     };
     console.log(product);
-    fetch("http://localhost:5000/product", {
+    // const url = `http://localhost:5000/product`;
+    const url = `https://auto-zone-01.herokuapp.com/product`;
+    fetch(url, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -38,7 +40,9 @@ const AddProduct = () => {
     <div>
       <div className="container mx-auto">
         <div className="bg-gray-100 shadow-lg  rounded-3xl p-5">
-          <h1 className="text-center text-2xl font-bold text-primary pb-5">Add Product</h1>
+          <h1 className="text-center text-2xl font-bold text-primary pb-5">
+            Add Product
+          </h1>
           <div className="flex-none grid sm:grid-cols-1 md:grid-cols-2 gap-5">
             <div className="w-full">
               <img

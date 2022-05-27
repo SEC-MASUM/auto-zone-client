@@ -19,7 +19,8 @@ const CheckoutForm = ({ order }) => {
 
   const { _id, totalPrice, email, address } = order;
   useEffect(() => {
-    const url = `http://localhost:5000/create-payment-intent`;
+    // const url = `http://localhost:5000/create-payment-intent`;
+    const url = `https://auto-zone-01.herokuapp.com/create-payment-intent`;
     if (totalPrice < 999999.99) {
       (async () => {
         const paymentIntent = await axios.post(
@@ -94,7 +95,9 @@ const CheckoutForm = ({ order }) => {
         status: "paid",
         transactionId: paymentIntent.id,
       };
-      fetch(`http://localhost:5000/payment/order/${_id}`, {
+      // const url = `http://localhost:5000/payment/order/${_id}`;
+      const url = `https://auto-zone-01.herokuapp.com/payment/order/${_id}`;
+      fetch(url, {
         method: "PATCH",
         headers: {
           "content-type": "application/json",
