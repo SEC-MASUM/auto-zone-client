@@ -86,20 +86,21 @@ const Payment = () => {
 
               {/* ----------Price and Order Qty---------- */}
               <div className="text-left">
-                <h3 className="text-left text-primary">
+                <h3 className="text-left">
                   Unite Price : ${price}
                 </h3>
 
                 <h4>Order Qty: {orderQty}</h4>
-
-                <h3 className="text-left text-2xl font-semibold text-primary">
-                  Total Price : ${totalPrice}
-                </h3>
+                <p className="text-left text-2xl font-semibold">
+                  <span className=" text-green-500">Please pay : ${totalPrice}</span><span> to confirm your order.</span>
+                </p>
               </div>
               <div className="flex p-4 pb-2 border-t border-gray-200 "></div>
               {/* ---------------Address-------- */}
               <div className="flex flex-col  justify-items-stretch ">
-                <h1>Shipping Information</h1>
+                <h1 className="text-center text-xl  text-primary">
+                  Shipping Information
+                </h1>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5">
                   <label className="label">
                     <span className="label-text">
