@@ -20,6 +20,7 @@ import Login from "./Pages/Shared/Login/Login";
 import SignUp from "./Pages/Shared/SignUp/SignUp";
 import RequireAuth from "./Pages/Shared/RequireAuth/RequireAuth";
 import Payment from "./Pages/Payment/Payment";
+import Reviews from "./Pages/Reviews/Reviews";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           }
         />
         <Route path="/products" element={<Products />} />
+        <Route path="/reviews" element={<Reviews />} />
         <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/login" element={<Login />} />
