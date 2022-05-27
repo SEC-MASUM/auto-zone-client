@@ -137,21 +137,21 @@ const AddProduct = () => {
                 </div>
                 <div className="flex my-2 border-t-2 border-t border-gray-300"></div>
                 <div className="flex w-full my-5">
-                  <input
+                  {/* <input
                     type="file"
                     className="flex items-center py-2 input  rounded font-medium  max-w-xs my-2"
                   />
 
-                  <div className="divider divider-horizontal">OR</div>
+                  <div className="divider divider-horizontal">OR</div> */}
 
-                  <div className="flex">
+                  <div className="flex space-x-1">
                     <label className="label">
                       <span className="label-text">Photo URL</span>
                     </label>
                     <input
                       name="image"
                       type="text"
-                      className="flex items-center py-2 input  rounded font-medium  max-w-xs my-2"
+                      className="flex items-center py-2 input input-sm rounded font-medium  max-w-xs my-2"
                       required
                     />
                   </div>
