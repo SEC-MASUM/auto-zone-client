@@ -1,67 +1,38 @@
 import React from "react";
+import { MdReviews } from "react-icons/md";
+import { BsTools } from "react-icons/bs";
+import { FcShipped } from "react-icons/fc";
 
 const BusinessSummary = () => {
   return (
-    <div className="container mx-auto">
-      <h1 className="text-4xl text-center font-bold my-12">Business Summary</h1>
-      <div>
-        <div className=" text-center  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          <div className=" shadow rounded-2xl bg-neutral">
+    <div className="bg-gray-800 py-12 my-12">
+      <div className="container mx-auto">
+        <h1 className="w-7/12 mx-auto text-4xl text-white text-center font-bold pb-12">
+          We work directly with you to identify the right parts for your needs!
+        </h1>
+
+        <div className="w-full justify-items-center  grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="w-full min-w-40 h-40 min-h-fit max-w-xs md:max-w-md shadow rounded-2xl bg-white text-center p-6">
             <div className="stat-figure text-primary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-8 h-8 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                ></path>
-              </svg>
+              <MdReviews className="inline-block w-10 h-10"></MdReviews>
             </div>
-            <div className="stat-title">Total Likes</div>
+            <div className="stat-title">Total Reviews</div>
             <div className="stat-value text-primary">25.6K</div>
-            <div className="stat-desc">21% more than last month</div>
           </div>
 
-          <div className="shadow rounded-2xl bg-neutral">
+          <div className="w-full min-w-40 h-40 min-h-fit max-w-xs md:max-w-md shadow rounded-2xl bg-white text-center p-6">
             <div className="stat-figure text-secondary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                className="inline-block w-8 h-8 stroke-current"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                ></path>
-              </svg>
+              <BsTools className="inline-block w-10 h-10"></BsTools>
             </div>
-            <div className="stat-title">Page Views</div>
-            <div className="stat-value text-secondary">2.6M</div>
-            <div className="stat-desc">21% more than last month</div>
+            <div className="stat-title">Total Parts</div>
+            <div className="stat-value text-secondary">500</div>
           </div>
-
-          <div className="shadow rounded-2xl bg-neutral">
+          <div className="w-full min-w-40 h-40 min-h-fit max-w-xs md:max-w-md shadow rounded-2xl bg-white text-center p-6">
             <div className="stat-figure text-secondary">
-              <div className="avatar online">
-                <div className="w-16 rounded-full">
-                  <img
-                    src="https://api.lorem.space/image/face?w=128&h=128"
-                    alt=""
-                  />
-                </div>
-              </div>
+              <FcShipped className="inline-block w-10 h-10"></FcShipped>
             </div>
-            <div className="stat-value">86%</div>
-            <div className="stat-title">Tasks done</div>
-            <div className="stat-desc text-secondary">31 tasks remaining</div>
+            <div className="stat-title">Order Shipped</div>
+            <div className="stat-value text-green-600">1200</div>
           </div>
         </div>
       </div>
