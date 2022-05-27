@@ -21,10 +21,11 @@ import SignUp from "./Pages/Shared/SignUp/SignUp";
 import RequireAuth from "./Pages/Shared/RequireAuth/RequireAuth";
 import Payment from "./Pages/Payment/Payment";
 import Reviews from "./Pages/Reviews/Reviews";
+import RequireAdmin from "./Pages/Shared/RequireAdmin/RequireAdmin";
 
 function App() {
   return (
-    <div >
+    <div>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
@@ -60,10 +61,38 @@ function App() {
           <Route index element={<MyOrders />} />
           <Route path="profile" element={<Profile />} />
           <Route path="addReview" element={<AddReview />} />
-          <Route path="manageOrders" element={<ManageOrders />} />
-          <Route path="addProducts" element={<AddProduct />} />
-          <Route path="userRole" element={<UserRole />} />
-          <Route path="manageProducts" element={<ManageProducts />} />
+          <Route
+            path="manageOrders"
+            element={
+              <RequireAdmin>
+                <ManageOrders />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="addProducts"
+            element={
+              <RequireAdmin>
+                <AddProduct />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="userRole"
+            element={
+              <RequireAdmin>
+                <UserRole />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="manageProducts"
+            element={
+              <RequireAdmin>
+                <ManageProducts />
+              </RequireAdmin>
+            }
+          />
         </Route>
 
         <Route path="*" element={<NotFound />} />
