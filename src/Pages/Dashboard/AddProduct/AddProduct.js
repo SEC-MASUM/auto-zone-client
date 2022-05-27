@@ -38,7 +38,7 @@ const AddProduct = () => {
     <div>
       <div className="container mx-auto">
         <div className="bg-gray-100 shadow-lg  rounded-3xl p-5">
-          <h1 className="text-2xl font-bold text-primary pb-5">Add Product</h1>
+          <h1 className="text-center text-2xl font-bold text-primary pb-5">Add Product</h1>
           <div className="flex-none grid sm:grid-cols-1 md:grid-cols-2 gap-5">
             <div className="w-full">
               <img

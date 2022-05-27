@@ -38,7 +38,7 @@ const AddReview = () => {
       <div className="hero">
         <div className="card flex-shrink-0 w-full max-w-3xl shadow-2xl bg-base-100">
           <div className="card-body">
-            <h1 className="text-2xl font-bold text-primary">Add review</h1>
+            <h1 className="text-center text-2xl font-bold text-primary">Add review</h1>
             <form onSubmit={handleSubmit} className="space-y-3">
               <div className="form-control justify-center items-center space-x-2">
                 <label className="label">

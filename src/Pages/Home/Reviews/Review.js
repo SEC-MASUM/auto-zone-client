@@ -8,7 +8,7 @@ const Review = ({ oneReview }) => {
       <div class=" text-white space-y-4 flex-none w-full flex flex-col items-center justify-center">
         <div >
           <div class=" text-9xl text-red-600 text-left leading-10 h-5">“</div>
-          <p class="max-w-md text-sm  text-center px-5">{oneReview.review}</p>
+          <p class="max-w-md text-sm text-center px-5">{oneReview.review}</p>
           <div class=" text-9xl text-red-600 text-right leading-none h-10 -mt-4">
             ”
           </div>

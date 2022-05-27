@@ -28,7 +28,7 @@ const UserRole = () => {
   // console.log(users);
   return (
     <div>
-      <h1>User Role</h1>
+      <h1 className="text-center text-2xl font-bold text-primary">User Role</h1>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>

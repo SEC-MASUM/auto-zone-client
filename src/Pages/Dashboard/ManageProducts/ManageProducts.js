@@ -31,7 +31,9 @@ const ManageProducts = () => {
   // };
   return (
     <div>
-      <h1>Manage Products</h1>
+      <h1 className="text-center text-2xl font-bold text-primary">
+        Manage Products
+      </h1>
       <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
