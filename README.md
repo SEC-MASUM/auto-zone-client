@@ -17,3 +17,7 @@
 - Tailwind CSS
 - Tailwindcss Forms
 - Daisy UI
+- React Stripe-js
+- stripe-js
+- Axios
+- Devicon
