@@ -22,6 +22,8 @@ import RequireAuth from "./Pages/Shared/RequireAuth/RequireAuth";
 import Payment from "./Pages/Payment/Payment";
 import Reviews from "./Pages/Reviews/Reviews";
 import RequireAdmin from "./Pages/Shared/RequireAdmin/RequireAdmin";
+import UpdateProfile from "./Pages/Dashboard/Profile/UpdateProfile/UpdateProfile";
+import ProfileDetails from "./Pages/Dashboard/Profile/ProfileDetails/ProfileDetails";
 
 function App() {
   return (
@@ -59,7 +61,10 @@ function App() {
           }
         >
           <Route index element={<MyOrders />} />
-          <Route path="profile" element={<Profile />} />
+          <Route path="profile" element={<Profile />}>
+            <Route index element={<ProfileDetails />} />
+            <Route path="update" element={<UpdateProfile />} />
+          </Route>
           <Route path="addReview" element={<AddReview />} />
           <Route
             path="manageOrders"
