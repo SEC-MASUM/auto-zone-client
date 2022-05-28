@@ -1,4 +1,5 @@
 import React from "react";
+import { HiCursorClick } from "react-icons/hi";
 
 const NewsLetter = () => {
   return (
@@ -6,9 +7,14 @@ const NewsLetter = () => {
       <div class="container mx-auto">
         <div class="flex flex-col justify-center items-center md:flex-row md:justify-between md:items-center gap-2">
           <div className="flex-1 flex justify-items-stretch items-center space-x-3 text-white">
-            <h3 class="text-3xl font-semibold  ">Newsletter</h3>
+            <h3 class="text-3xl font-semibold flex">
+              <span>
+                <HiCursorClick />
+              </span>{" "}
+              Newsletter
+            </h3>
             <p class="">
-              Enter your email and well send you a coupon with 10 off your next
+              Enter your email and well send you a coupon with 10% off your next
               order
             </p>
           </div>
