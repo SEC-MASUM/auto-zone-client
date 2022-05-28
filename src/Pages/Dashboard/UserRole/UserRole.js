@@ -14,7 +14,7 @@ const UserRole = () => {
     isLoading,
     refetch,
   } = useQuery("users", () =>
-    axios.get(`http://localhost:5000/user`, {
+    axios.get(`https://auto-zone-01.herokuapp.com/user`, {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
