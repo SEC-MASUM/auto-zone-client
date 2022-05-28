@@ -23,7 +23,7 @@ const Purchase = () => {
     isLoading,
     refetch,
   } = useQuery(["product", id], () =>
-    axios.get(`http://localhost:5000/product/${id}`, {
+    axios.get(`https://auto-zone-01.herokuapp.com/product/${id}`, {
       headers: {
         "content-type": "application/json",
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
@@ -71,7 +71,7 @@ const Purchase = () => {
       status: "unpaid",
     };
     console.log(order);
-    fetch("http://localhost:5000/order", {
+    fetch("https://auto-zone-01.herokuapp.com/order", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -146,7 +146,7 @@ const Purchase = () => {
                 <div className="flex p-4 pb-2 border-t border-gray-200 "></div>
                 {/* ---------------Address-------- */}
                 <div className="flex flex-col  justify-items-stretch ">
-                  <h1>Shipping Information</h1>
+                  <h1 className="text-center font-medium">Shipping Information</h1>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5">
                     <div className="form-control mx-auto w-full max-w-sm">
                       <label className="label">

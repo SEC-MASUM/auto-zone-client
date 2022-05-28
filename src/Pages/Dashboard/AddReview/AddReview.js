@@ -14,7 +14,7 @@ const AddReview = () => {
       rating: event.target.rating?.value,
       review: event.target.review?.value,
     };
-    fetch("http://localhost:5000/review", {
+    fetch("https://auto-zone-01.herokuapp.com/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",
