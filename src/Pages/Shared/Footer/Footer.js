@@ -6,6 +6,8 @@ import paypal from "../../../Assets/icons/003-paypal.png";
 import visa from "../../../Assets/icons/004-visa.png";
 
 const Footer = () => {
+  const today = new Date();
+  const year = today.getFullYear();
   return (
     <div className="bg-secondary">
       <div className="container mx-auto">
@@ -21,8 +23,8 @@ const Footer = () => {
             <span className="footer-title">Services</span>
             <a className="link link-hover">Branding</a>
             <a className="link link-hover">Design</a>
-            <a className="link link-hover">Marketing</a>
-            <a className="link link-hover">Advertisement</a>
+            <a className="link link-hover">Manufacturing</a>
+            <a className="link link-hover">Delivery</a>
           </div>
           <div>
             <span className="footer-title">Company</span>
@@ -40,7 +42,7 @@ const Footer = () => {
         </footer>
         <footer className="footer px-10 py-4 border-t  text-base-100 border-base-300 items-center">
           <div className="items-center grid-flow-col">
-            <p>Copyright © 2018 PlazaThemes. All Right Reserved.</p>
+            <p>Copyright &copy; {year} Auto Zone. All Right Reserved.</p>
           </div>
           <div className="md:place-self-center md:justify-self-end bg-white px-2">
             <div className="grid grid-flow-col gap-4">
