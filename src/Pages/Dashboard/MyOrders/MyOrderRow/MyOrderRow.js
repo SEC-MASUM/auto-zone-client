@@ -1,8 +1,8 @@
 import React from "react";
 import { Link, Navigate } from "react-router-dom";
-import DeleteModal from "../../../../Components/DeleteModal/DeleteModal";
 
-const MyOrderRow = ({ order, index, refetch, handleDelete }) => {
+
+const MyOrderRow = ({ order, index, refetch, setProduct }) => {
   const { _id, email, name, orderQty, price, totalPrice, status, image } =
     order;
   return (
@@ -33,15 +33,20 @@ const MyOrderRow = ({ order, index, refetch, handleDelete }) => {
         <div className="space-x-2">
           {status === "unpaid" && (
             <>
-              <DeleteModal id={_id} name={name} handleDelete={handleDelete}>
-                Cancel
-              </DeleteModal>
+              <label
+                onClick={() => setProduct(order)}
+                // handleDelete={handleDelete}
+                for="confirm-delete-modal"
+                class="btn btn-sm  btn-primary"
+              >
+                Delete
+              </label>
             </>
           )}
           {
             <Link
               to={`/payment/${_id}`}
-              disabled={status!=="unpaid"}
+              disabled={status !== "unpaid"}
               className="btn btn-sm btn-success"
             >
               Pay

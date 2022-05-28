@@ -1,14 +1,16 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../Firebase/Firebase.init";
 import Loading from "../../Shared/Loading/Loading";
 import MyOrderRow from "./MyOrderRow/MyOrderRow";
 import { toast } from "react-toastify";
+import ConfirmDeleteModal from "../../../Components/ConfirmDeleteModal/ConfirmDeleteModal";
 
 const MyOrders = () => {
   const [user, loading] = useAuthState(auth);
+  const [product, setProduct] = useState(null);
   // const url = `https://auto-zone-01.herokuapp.com/order/${user.email}`;
   // const url = `http://localhost:5000/order/${user.email}`;
   const {
@@ -27,26 +29,7 @@ const MyOrders = () => {
   if (isLoading || loading) {
     return <Loading />;
   }
-  const handleDelete = (id) => {
-    (async () => {
-      // const url = `http://localhost:5000/order/${id}`;
-      const url = `https://auto-zone-01.herokuapp.com/order/${id}`;
-      console.log(url);
-      const result = await axios.delete(url, {
-        headers: {
-          "content-type": "application/json",
-          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-        },
-      });
-      console.log(result);
-      if (result.data.deletedCount) {
-        toast.success(`Deleted Successfully`);
-        refetch();
-      } else {
-        toast.success(`Failed to delete`);
-      }
-    })();
-  };
+
   return (
     <div>
       <h1 className="text-center text-2xl font-bold text-primary">My Orders</h1>
@@ -71,12 +54,19 @@ const MyOrders = () => {
                 index={index}
                 order={order}
                 refetch={refetch}
-                handleDelete={handleDelete}
+                setProduct={setProduct}
               />
             ))}
           </tbody>
         </table>
       </div>
+      {product && (
+        <ConfirmDeleteModal
+          product={product}
+          setProduct={setProduct}
+          refetch={refetch}
+        ></ConfirmDeleteModal>
+      )}
     </div>
   );
 };

@@ -1,34 +1,21 @@
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
+
+import DeleteModal from "../../../Components/DeleteModal/DeleteModal";
 import useProducts from "../../../Hooks/useProducts";
 import Loading from "../../Shared/Loading/Loading";
 import ProductRow from "./ProductRow/ProductRow";
 
 const ManageProducts = () => {
   const { products, isLoading, refetch } = useProducts();
+  const [modalData, setModalData] = useState(null);
+  
   if (isLoading) {
     return <Loading />;
   }
 
-  // const handleDelete = (id) => {
-  //   (async () => {
-  //     const url = `http://localhost:5000/product/${id}`;
-  //     console.log(url);
-  //     const result = await axios.delete(url, {
-  //       headers: {
-  //         "content-type": "application/json",
-  //         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-  //       },
-  //     });
-  //     console.log(result);
-  //     if (result.data.deletedCount) {
-  //       toast.success(`Deleted Successfully`);
-  //       refetch();
-  //     }
-  //   })();
-  // };
   return (
     <div>
       <h1 className="text-center text-2xl font-bold text-primary">
@@ -54,12 +41,19 @@ const ManageProducts = () => {
                 index={index}
                 product={product}
                 refetch={refetch}
-                // handleDelete={handleDelete}
+                setModalData={setModalData}
               />
             ))}
           </tbody>
         </table>
       </div>
+      {modalData && (
+        <DeleteModal
+          modalData={modalData}
+          setModalData={setModalData}
+          refetch={refetch}
+        ></DeleteModal>
+      )}
     </div>
   );
 };

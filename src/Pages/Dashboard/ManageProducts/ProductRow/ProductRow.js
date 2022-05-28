@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import DeleteModal from "../../../../Components/DeleteModal/DeleteModal";
 
-const ProductRow = ({ product, index, refetch }) => {
+const ProductRow = ({ product, index, refetch, setModalData }) => {
   const { _id, name, description, minOrder, availableQty, price, image } =
     product;
   const handleDelete = () => {
@@ -46,9 +46,14 @@ const ProductRow = ({ product, index, refetch }) => {
       <td>
         <div className="space-x-2">
           <button className="btn btn-sm btn-success">Edit</button>
-          <DeleteModal id={_id} name={name} handleDelete={handleDelete}>
+          <label
+            onClick={() => setModalData(product)}
+            // handleDelete={handleDelete}
+            for="product-delete-modal"
+            class="btn btn-sm  btn-primary"
+          >
             Delete
-          </DeleteModal>
+          </label>
         </div>
       </td>
     </tr>
