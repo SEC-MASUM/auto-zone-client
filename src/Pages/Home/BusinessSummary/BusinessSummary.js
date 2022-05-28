@@ -17,7 +17,7 @@ const BusinessSummary = () => {
               <MdReviews className="inline-block w-10 h-10"></MdReviews>
             </div>
             <div className="stat-title">Total Reviews</div>
-            <div className="stat-value text-primary">25.6K</div>
+            <div className="stat-value text-primary">2.8K+</div>
           </div>
 
           <div className="w-full min-w-40 h-40 min-h-fit max-w-xs md:max-w-md shadow rounded-2xl bg-white text-center p-6">
@@ -25,14 +25,14 @@ const BusinessSummary = () => {
               <BsTools className="inline-block w-10 h-10"></BsTools>
             </div>
             <div className="stat-title">Total Parts</div>
-            <div className="stat-value text-secondary">500</div>
+            <div className="stat-value text-secondary">500+</div>
           </div>
           <div className="w-full min-w-40 h-40 min-h-fit max-w-xs md:max-w-md shadow rounded-2xl bg-white text-center p-6">
             <div className="stat-figure text-secondary">
               <FcShipped className="inline-block w-10 h-10"></FcShipped>
             </div>
             <div className="stat-title">Order Shipped</div>
-            <div className="stat-value text-green-600">1200</div>
+            <div className="stat-value text-green-600">3600+</div>
           </div>
         </div>
       </div>
