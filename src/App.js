@@ -24,6 +24,7 @@ import Reviews from "./Pages/Reviews/Reviews";
 import RequireAdmin from "./Pages/Shared/RequireAdmin/RequireAdmin";
 import UpdateProfile from "./Pages/Dashboard/Profile/UpdateProfile/UpdateProfile";
 import ProfileDetails from "./Pages/Dashboard/Profile/ProfileDetails/ProfileDetails";
+import Welcome from "./Pages/Dashboard/Welcome/Welcome";
 
 function App() {
   return (
@@ -60,7 +61,8 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route index element={<MyOrders />} />
+          <Route index element={<Welcome />} />
+          <Route path="myOrder" element={<MyOrders />} />
           <Route path="profile" element={<Profile />}>
             <Route index element={<ProfileDetails />} />
             <Route path="update" element={<UpdateProfile />} />
