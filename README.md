@@ -1,4 +1,4 @@
-# Auto Zone
+# Auto Zone Client
 
 > It is a automobile parts manufacturer website. In this web site has 2 panel. One is for customer or consumer and another is Admin panel. Admin panel secured from both client and server side. It was a challenging project for me. I learnt many things when I do this project.
 
@@ -37,4 +37,5 @@
 
 #### Code
 
-[Client](https://github.com/programming-hero-web-course1/manufacturer-website-client-side-SEC-MASUM) [Server](https://github.com/programming-hero-web-course1/manufacturer-website-server-side-SEC-MASUM)
+- [Client](https://github.com/SEC-MASUM/auto-zone-client)
+- [Server](https://github.com/SEC-MASUM/auto-zone-server)
