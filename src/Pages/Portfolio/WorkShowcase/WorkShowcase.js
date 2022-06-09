@@ -41,7 +41,7 @@ const WorkShowcase = () => {
                       Preview
                     </a>
                     <a
-                      href="https://github.com/Porgramming-Hero-web-course/convention-center-SEC-MASUM"
+                      href="https://github.com/SEC-MASUM/convention-center-landing-page-bootstrap"
                       className="btn btn-sm"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -75,7 +75,7 @@ const WorkShowcase = () => {
                       Preview
                     </a>
                     <a
-                      href="https://github.com/Porgramming-Hero-web-course/money-master-SEC-MASUM"
+                      href="https://github.com/SEC-MASUM/money-master"
                       className="btn btn-sm"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -109,7 +109,7 @@ const WorkShowcase = () => {
                       Preview
                     </a>
                     <a
-                      href="https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-SEC-MASUM"
+                      href="https://github.com/SEC-MASUM/book-buddy-client"
                       className="btn btn-sm"
                       target="_blank"
                       rel="noopener noreferrer"
