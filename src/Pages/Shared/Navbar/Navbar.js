@@ -2,7 +2,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { signOut } from "firebase/auth";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../../Assets/images/Logo.png";
 import auth from "../../../Firebase/Firebase.init";
 import Loading from "../Loading/Loading";
@@ -23,38 +23,38 @@ const Navbar = () => {
   const menuItems = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <Link to="/products">Products</Link>
+        <NavLink to="/products">Products</NavLink>
       </li>
       {user && (
         <li>
-          <Link to="/dashboard">Dashboard</Link>
+          <NavLink to="/dashboard">Dashboard</NavLink>
         </li>
       )}
       <li>
-        <Link to="/portfolio">Portfolio</Link>
+        <NavLink to="/portfolio">Portfolio</NavLink>
       </li>
       <li>
-        <Link to="/blogs">Blogs</Link>
+        <NavLink to="/blogs">Blogs</NavLink>
       </li>
       {!user && (
         <li>
-          <Link to="/login">Login</Link>
+          <NavLink to="/login">Login</NavLink>
         </li>
       )}
       {user && (
         <>
           <li>
-            <Link to="/" className="whitespace-nowrap">
+            <NavLink to="/" className="whitespace-nowrap">
               {user.displayName}
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link onClick={logout} to="/" className="whitespace-nowrap">
+            <NavLink onClick={logout} to="/" className="whitespace-nowrap">
               Sign Out
-            </Link>
+            </NavLink>
           </li>
         </>
       )}
@@ -81,7 +81,7 @@ const Navbar = () => {
             </a>
           </div>
           <div className="navbar-end hidden lg:flex">
-            <ul className="menu menu-horizontal p-0">{menuItems}</ul>
+            <ul className="menu menu-horizontal p-0 space-x-2">{menuItems}</ul>
           </div>
           <div className="navbar-end lg:hidden">
             <label
